@@ -6,12 +6,22 @@ from chatterbot.trainers import ListTrainer
 app = Flask(__name__)
 
 bot = ChatBot("Candice")
-bot.set_trainer(ListTrainer)
-bot.train(['What is your name?', 'My name is Candice'])
-bot.train(['Who are you?', 'I am a bot' ])
-bot.train(['Who created you?', 'Tony Stark', 'Sahil Rajput', 'You?'])
-bot.set_trainer(ChatterBotCorpusTrainer)
-bot.train("chatterbot.corpus.english")
+# bot.set_trainer(ListTrainer)
+# bot.train(['What is your name?', 'My name is Candice'])
+# bot.train(['Who are you?', 'I am a bot' ])
+# bot.train(['Who created you?', 'Tony Stark', 'Sahil Rajput', 'You?'])
+
+trainer = ListTrainer(bot)
+# bot.set_trainer(ChatterBotCorpusTrainer)
+trainer.train(['What is your name?', 'My name is Candice'])
+trainer.train(['Who are you?', 'I am a bot' ])
+trainer.train(['Who created you?', 'Tony Stark', 'Sahil Rajput', 'You?'])
+
+
+
+trainer.train("chatterbot.corpus.english")
+
+
 
 @app.route("/")
 def home():
