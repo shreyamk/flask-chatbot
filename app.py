@@ -6,20 +6,25 @@ from chatterbot.trainers import ListTrainer
 app = Flask(__name__)
 
 bot = ChatBot("Candice")
-# bot.set_trainer(ListTrainer)
-# bot.train(['What is your name?', 'My name is Candice'])
-# bot.train(['Who are you?', 'I am a bot' ])
-# bot.train(['Who created you?', 'Tony Stark', 'Sahil Rajput', 'You?'])
 
-trainer = ListTrainer(bot)
-# bot.set_trainer(ChatterBotCorpusTrainer)
-trainer.train(['What is your name?', 'My name is Candice'])
-trainer.train(['Who are you?', 'I am a bot' ])
-trainer.train(['Who created you?', 'Tony Stark', 'Sahil Rajput', 'You?'])
+# List trainer - simple example
+
+# trainer = ListTrainer(bot)
+# trainer.train([
+    # "How are you?",
+    # "I am good.",
+    # "That is good to hear.",
+    # "Thank you",
+    # "You are welcome.",
+# ])
 
 
+# NLP trainer
 
+trainer = ChatterBotCorpusTrainer(bot)
 trainer.train("chatterbot.corpus.english")
+
+
 
 
 
